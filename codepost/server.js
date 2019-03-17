@@ -2,6 +2,7 @@ const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
 const http = require('http');
+const api = require('./server/routes/api');
 
 const app = express();
 
@@ -10,7 +11,7 @@ app.use(parser.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname, 'dist/codepost')));
 
-// app.use('/api', api);
+app.use('/api', api);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/codepost/index.html'));
