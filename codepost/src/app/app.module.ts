@@ -8,13 +8,15 @@ import { PostService } from './services/post.service';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { DetailsComponent } from './components/details/details.component';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
-    DetailsComponent
+    DetailsComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
