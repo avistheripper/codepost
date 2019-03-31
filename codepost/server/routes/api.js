@@ -23,5 +23,16 @@ router.get('/posts', (req, res) => {
             }
         })
 });
+router.get('/details/:id', (req, res) => {
+    post.findById(req.params.id)
+        .exec((err, post) => {
+            if(err) {
+                console.warn('Error occurred');
+                res.send(404);
+            } else {
+                res.json(post)
+            }
+        })
+});
 
 module.exports = router;
