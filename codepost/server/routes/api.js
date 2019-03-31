@@ -7,7 +7,7 @@ const db = "mongodb://avistheripper:Avistheripper1992@ds125388.mlab.com:25388/co
 
 mongoose.Promise = global.Promise;
 mongoose.connect(db, (err) => {
-    err 
+    err
         ? console.log(`Error: ${err}`)
         : console.log('Connected to mongo!')
 });
