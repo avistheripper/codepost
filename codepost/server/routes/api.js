@@ -23,6 +23,17 @@ router.get('/posts', (req, res) => {
             }
         })
 });
+router.post('/posts', (req, res) => {
+    const { title, url, description } = req.body;
+    new post({
+        title,
+        url,
+        description
+    })
+    .save()
+    .then(res.redirect('/'))
+    .catch(err => console.warn(err));
+});
 router.get('/details/:id', (req, res) => {
     post.findById(req.params.id)
         .exec((err, post) => {

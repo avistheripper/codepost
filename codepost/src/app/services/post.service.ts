@@ -11,7 +11,10 @@ export class PostService {
   public getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>('/api/posts');
   }
-  public getPost(id): Observable<Post> {
+  public getPost(id: number): Observable<Post> {
     return this.http.get<Post>(`/api/details/${id}`);
+  }
+  public createPost(post: Post): Observable<void> {
+    return this.http.post<void>('/api/posts', post);
   }
 }
