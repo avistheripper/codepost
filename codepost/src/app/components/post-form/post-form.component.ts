@@ -15,8 +15,7 @@ export class PostFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private restService: PostService,
-
-    ) { }
+    ) {}
 
   public ngOnInit(): void {
     this.createForm();
@@ -24,15 +23,23 @@ export class PostFormComponent implements OnInit {
 
   public createForm(): void {
     this.postForm = this.fb.group({
-      title: [''],
-      url: [''],
-      description: ['']
+      title: ['' , Validators.compose([
+        Validators.required,
+        Validators.maxLength(40)]
+      )],
+      url: ['' , Validators.required],
+      description: ['' , Validators.compose([
+        Validators.required,
+        Validators.maxLength(400)]
+      )]
     });
   }
 
-  public onSave(): void {
+  public onSave(post: Post): void {
     console.log('Saving...');
-
+    this.restService.createPost(post)
+      .subscribe(() => console.log('Post added!')
+      );
   }
 
   public onCancel(): void {
