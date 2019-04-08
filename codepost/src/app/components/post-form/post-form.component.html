@@ -1,3 +1,27 @@
-<p>
-  post-form works!
-</p>
+<div class="body-blur">
+  <div class="row columns">
+    <h1>Post a tutorial</h1>
+  </div>
+  <form [formGroup]="postForm" (ngSubmit)="onSave(postForm.value)" novalidate>
+    <div class="row">
+      <div class="columns small-12 medium-6">
+        <label for="title">Title of tutorial
+          <input type="text" name="title" formControlName="title">
+        </label>
+      </div>
+      <div class="columns small-12 medium-6">
+          <label for="url">URL
+            <input type="text" name="url" formControlName="url">
+          </label>
+      </div>
+    </div>
+      <div class="row columns">
+        <label for="description">Description
+          <textarea name="description" cols="30" rows="10" formControlName="description">
+
+          </textarea>
+        </label>
+        <input type="submit" class="cta-btn filled" value="Post Tutorial" [disabled]="postForm.pristine || postForm.invalid">
+      </div>
+  </form>
+</div>
