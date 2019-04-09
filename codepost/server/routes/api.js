@@ -25,14 +25,18 @@ router.get('/posts', (req, res) => {
 });
 router.post('/posts', (req, res) => {
     const { title, url, description } = req.body;
-    new post({
-        title,
-        url,
-        description
-    })
-    .save()
-    .then(res.redirect('/'))
-    .catch(err => console.warn(err));
+    let newPost = new post();
+    newPost.title = title;
+    newPost.url = url;
+    newPost.description = description;
+    console.log(newPost);
+    newPost.save((err, addedPost) => {
+        if (err) {
+            console.warn('Error occurred', err)
+        } else {
+            res.json(addedPost)
+        }
+    });
 });
 router.get('/details/:id', (req, res) => {
     post.findById(req.params.id)
