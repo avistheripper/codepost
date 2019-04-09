@@ -15,6 +15,7 @@ export class PostService {
     return this.http.get<Post>(`/api/details/${id}`);
   }
   public createPost(post: Post): Observable<void> {
+    console.log(post);
     return this.http.post<void>('/api/posts', post);
   }
 }
